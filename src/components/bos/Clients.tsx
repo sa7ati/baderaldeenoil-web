@@ -72,7 +72,7 @@ export default function Clients() {
       </div>
 
       {/* Row 1 - Twin sets for mathematically perfect loop */}
-      <div className="marquee-viewport mb-8 sm:mb-12">
+      <div className="marquee-viewport mb-8 sm:mb-12" dir="ltr">
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-r from-white dark:from-[#001A16] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-l from-[#F5F5F5] dark:from-[#002621] to-transparent z-10 pointer-events-none"></div>
         <div className="marquee-track marquee-track-top">
@@ -82,7 +82,7 @@ export default function Clients() {
       </div>
 
       {/* Row 2 - Reversed Twin sets */}
-      <div className="marquee-viewport">
+      <div className="marquee-viewport" dir="ltr">
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-r from-white dark:from-[#001A16] to-transparent z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-l from-[#F5F5F5] dark:from-[#002621] to-transparent z-10 pointer-events-none"></div>
         <div className="marquee-track marquee-track-bottom">
@@ -124,13 +124,6 @@ export default function Clients() {
         @keyframes scroll-right-50 {
           0% { transform: translate3d(-50%, 0, 0); }
           100% { transform: translate3d(0, 0, 0); }
-        }
-
-        [dir='rtl'] .marquee-track-top {
-          animation-name: scroll-right-50;
-        }
-        [dir='rtl'] .marquee-track-bottom {
-          animation-name: scroll-left-50;
         }
 
         @media (max-width: 768px) {
