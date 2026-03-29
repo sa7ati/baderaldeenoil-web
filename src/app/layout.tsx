@@ -19,17 +19,33 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://baderaldeenoil.com"),
-  title: "Baderaldeen Oil Services (BOS) | شركة بدر الدين للخدمات النفطية",
-  description: "Baderaldeen Oil Services (BOS) - Your trusted partner for integrated oil and gas services in Libya. Excellence. Quality. Trust. شركة بدر الدين للخدمات النفطية - شريككم الموثوق لخدمات النفط والغاز المتكاملة في ليبيا",
-  keywords: ["Oil Services", "Gas Services", "Libya", "Baderaldeen", "BOS", "Petroleum", "Energy", "Maintenance", "Construction", "Engineering", "الخدمات النفطية", "ليبيا", "بدر الدين"],
-  authors: [{ name: "Baderaldeen Oil Services" }],
+  title: {
+    default: "Baderaldeen Oil Services (BOS) | شركة بدر الدين للخدمات النفطية",
+    template: "%s | BOS",
+  },
+  description: "Baderaldeen Oil Services (BOS) provides world-class integrated oil and gas solutions in Libya, specializing in engineering, maintenance, and logistics. شركة بدر الدين للخدمات النفطية - شريك الابتكار والجودة لخدمات النفط والغاز المتكاملة في ليبيا.",
+  keywords: ["Oil Services Libya", "Gas Services Libya", "Baderaldeen Oil", "BOS Libya", "Petroleum Engineering Benghazi", "Oilfield maintenance Libya", "الخدمات النفطية في ليبيا", "شركة بدر الدين", "خدمات الحقول النفطية", "هندسة النفط والغاز"],
+  authors: [{ name: "Baderaldeen Oil Services", url: "https://baderaldeenoil.com" }],
+  creator: "Baderaldeen Oil Services",
+  publisher: "Baderaldeen Oil Services",
+  formatDetection: {
+    email: false,
+    address: true,
+    telephone: true,
+  },
   icons: {
-    icon: "/bos-logo.png",
-    apple: "/bos-logo.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
-    title: "Baderaldeen Oil Services (BOS)",
-    description: "Your trusted partner for integrated oil and gas services in Libya. Excellence. Quality. Trust.",
+    title: "Baderaldeen Oil Services (BOS) - Excellence in Energy",
+    description: "Discover premium integrated oil and gas services in Libya. Leading the industry with quality, safety, and 14+ years of expertise.",
     url: "https://baderaldeenoil.com",
     siteName: "Baderaldeen Oil Services",
     type: "website",
@@ -39,19 +55,27 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Baderaldeen Oil Services",
+        alt: "Baderaldeen Oil Services (BOS) - Libya",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baderaldeen Oil Services (BOS)",
-    description: "Your trusted partner for integrated oil and gas services in Libya",
+    title: "Baderaldeen Oil Services (BOS) | Leading Energy Solutions in Libya",
+    description: "Excellence. Quality. Trust. Explore our integrated services for the oil and gas sector in Libya.",
     images: ["/og-image.png"],
+    creator: "@baderaldeenoil",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   alternates: {
     canonical: "https://baderaldeenoil.com",

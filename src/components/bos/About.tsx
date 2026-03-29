@@ -1,33 +1,43 @@
-'use client';
-
+import { useState } from 'react';
 import { useI18n } from '@/lib/i18n';
 import { Card, CardContent } from '@/components/ui/card';
-import { History, Eye, Target, Building2, Users, Award } from 'lucide-react';
+import { History, Eye, Target, Building2, Users, Award, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function About() {
   const { t, isRTL, locale } = useI18n();
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const toggleExpand = (key: string) => {
+    setExpandedCard(expandedCard === key ? null : key);
+  };
 
   const items = [
     {
       key: 'story',
       title: t('about.storyTitle'),
       content: t('about.storyContent'),
+      details: t('about.storyDetails'),
       icon: History,
       color: 'from-[#004D40] to-[#006B5E]',
+      image: '/about-story.jpg',
     },
     {
       key: 'vision',
       title: t('about.visionTitle'),
       content: t('about.visionContent'),
+      details: t('about.visionDetails'),
       icon: Eye,
       color: 'from-[#D4AF37] to-[#B8962E]',
+      image: '/about-vision.jpg',
     },
     {
       key: 'mission',
       title: t('about.missionTitle'),
       content: t('about.missionContent'),
+      details: t('about.missionDetails'),
       icon: Target,
       color: 'from-[#1A1A1A] to-[#333333]',
+      image: '/about-mission.jpg',
     },
   ];
 
@@ -139,34 +149,86 @@ export default function About() {
           {items.map((item) => (
             <Card
               key={item.key}
-              className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white dark:bg-white/5"
+              className="group relative h-full overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white dark:bg-white/5"
             >
-              {/* Gradient Overlay on Top */}
+              {/* Background Image Container */}
+              <div className="absolute inset-0 z-0 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover opacity-90 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
+                />
+                {/* Dark Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001A16]/95 via-[#001A16]/80 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-500"></div>
+              </div>
+
+              {/* Top Accent Gradient */}
               <div
-                className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${item.color}`}
+                className={`absolute top-0 left-0 right-0 h-1.5 z-20 bg-gradient-to-r ${item.color} opacity-80`}
               ></div>
 
-              <CardContent className="p-8 pt-10">
-                {/* Icon */}
+              <CardContent className="relative z-10 p-8 pt-10 h-full flex flex-col">
+                {/* Icon Container */}
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300`}
+                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 shadow-xl border border-white/10`}
                 >
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] dark:text-white mb-4 group-hover:text-[#004D40] dark:group-hover:text-[#D4AF37] transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#D4AF37] transition-colors duration-300">
                   {item.title}
                 </h3>
 
                 {/* Content */}
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-justify group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
-                  {item.content}
-                </p>
+                <div className="flex-grow">
+                  <p className="text-gray-200 leading-relaxed text-justify group-hover:text-white transition-colors duration-300 mb-6">
+                    {item.content}
+                  </p>
+                </div>
+
+                {/* Show More Button */}
+                <button
+                  onClick={() => toggleExpand(item.key)}
+                  className={`flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md border border-white/20 hover:border-white/40 ${
+                    expandedCard === item.key
+                      ? 'bg-white text-[#004D40] dark:text-[#1A1A1A]'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  <span>
+                    {expandedCard === item.key
+                      ? t('about.showLess')
+                      : t('about.showMore')}
+                  </span>
+                  {expandedCard === item.key ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </button>
+
+                {/* Expanded Details */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    expandedCard === item.key ? 'max-h-[300px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
+                  }`}
+                >
+                  <div className="bg-black/30 backdrop-blur-md rounded-lg p-4 border border-white/10">
+                    <p className="text-white text-sm leading-relaxed text-justify">
+                      {item.details}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bottom Watermark Logo */}
+                <div className="mt-auto pt-6 flex justify-end opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                  <img src="/bos-logo.png" alt="BOS" className="w-10 h-10 object-contain transition-all duration-300" />
+                </div>
               </CardContent>
 
-              {/* Bottom Accent */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+              {/* Interactive Border Effect on Hover */}
+              <div className={`absolute bottom-0 left-0 right-0 h-1 z-20 bg-gradient-to-r ${item.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
             </Card>
           ))}
         </div>

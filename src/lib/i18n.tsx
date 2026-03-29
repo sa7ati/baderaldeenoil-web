@@ -31,10 +31,15 @@ const translations: Record<Locale, Translations> = {
       title: 'من نحن',
       storyTitle: 'قصتنا',
       storyContent: 'تأسست شركة بدر الدين لخدمات النفط والغاز منذ أكثر من 14 عاماً في تجهيز المنشآت النفطية والنقل الثقيل والخفيف، وهي متخصصة في تقديم كافة الخدمات لحقول النفط والغاز وكل ما يشمل الأنشطة المتعلقة بهما. هدفها الأساسي الانخراط في الهندسة والإنشاءات وخدمات العمالة المتخصصة.',
+      storyDetails: 'بدأت رحلتنا بطموح كبير لتطوير البنية التحتية النفطية. على مدار 14 عاماً، واجهنا التحديات وحولناها إلى نجاحات، مما جعلنا اليوم من أسرع الشركات نمواً وأكثرها موثوقية في السوق الليبي.',
       visionTitle: 'رؤيتنا',
       visionContent: 'هدفنا تجاوز توقعات العملاء بتقديم خدمة متميزة وأن نكون المزود الرائد للخدمات المهنية بأسعار تنافسية. نقدم حلولاً هندسية مبتكرة ونلتزم بصرامة بالصحة والسلامة والبيئة (HSE).',
+      visionDetails: 'نسعى لأن نكون المعيار الأول للجودة والابتكار في ليبيا، من خلال بناء شراكات استراتيجية عالمية ونقل التكنولوجيا المتقدمة لتعزيز الإنتاج الوطني وحماية البيئة.',
       missionTitle: 'مهمتنا',
       missionContent: 'الريادة في تقديم حلول قوى عاملة عالية الموهبة والخبرة في صناعة النفط والغاز لتمكين عملائنا من النجاح. تتخصص BOS في جلب أفضل الموارد للمشاريع الصعبة.',
+      missionDetails: 'نحن نعمل بلا كلل لتوفير حلول مبتكرة في قطاع النفط والغاز، مع التركيز على الكفاءة التشغيلية، استخدام أحدث التقنيات، وتدريب الكوادر الليبية الشابة لقيادة المستقبل.',
+      showMore: 'إظهار المزيد من التفاصيل',
+      showLess: 'عرض أقل',
     },
     // Services
     services: {
@@ -157,10 +162,15 @@ const translations: Record<Locale, Translations> = {
       title: 'About Us',
       storyTitle: 'Our Story',
       storyContent: 'Baderaldeen Oil & Gas Services Company was established more than 14 years ago in equipping oil facilities and heavy and light transportation. It specializes in providing all services for oil and gas fields and all related activities. Its main goal is to engage in engineering, construction, and specialized labor services.',
+      storyDetails: 'Our journey began with a great ambition to develop oil infrastructure. Over 14 years, we faced challenges and turned them into successes, making us today one of the fastest-growing and most reliable companies in the Libyan market.',
       visionTitle: 'Our Vision',
       visionContent: 'Our goal is to exceed customer expectations by providing distinguished service and becoming the leading provider of professional services at competitive prices. We provide innovative engineering solutions and strictly commit to Health, Safety, and Environment (HSE).',
+      visionDetails: 'We aim to be the primary benchmark for quality and innovation in Libya, by building global strategic partnerships and transferring advanced technology to enhance national production and protect the environment.',
       missionTitle: 'Our Mission',
       missionContent: 'Leading in providing highly talented and experienced workforce solutions in the oil and gas industry to enable our clients to succeed. BOS specializes in bringing the best resources for challenging projects.',
+      missionDetails: 'We work tirelessly to provide innovative solutions in the oil and gas sector, focusing on operational efficiency, utilizing the latest technologies, and training young Libyan talents to lead the future.',
+      showMore: 'Show More Details',
+      showLess: 'Show Less',
     },
     // Services
     services: {
