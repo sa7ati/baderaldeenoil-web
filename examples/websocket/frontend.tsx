@@ -149,14 +149,14 @@ export default function SocketDemo() {
                         <div className="flex justify-between items-start">
                           <div className="flex-1">
                             <p className={`text-sm font-medium ${msg.type === 'system'
-                                ? 'text-blue-600 italic'
-                                : 'text-gray-700'
+                              ? 'text-blue-600 italic'
+                              : 'text-gray-700'
                               }`}>
                               {msg.username}
                             </p>
                             <p className={`${msg.type === 'system'
-                                ? 'text-blue-500 italic'
-                                : 'text-gray-900'
+                              ? 'text-blue-500 italic'
+                              : 'text-gray-900'
                               }`}>
                               {msg.content}
                             </p>

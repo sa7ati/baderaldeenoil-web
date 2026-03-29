@@ -216,6 +216,15 @@ export default function Contact() {
                     </>
                   )}
                 </Button>
+                
+                {/* Company Logo Branding */}
+                <div className="pt-8 flex justify-center opacity-60 dark:opacity-80 transition-all duration-500">
+                  <img
+                    src="/bos-logo.png"
+                    alt="Baderaldeen Oil Services"
+                    className="h-48 md:h-64 w-full max-w-[280px] object-contain transition-all duration-500"
+                  />
+                </div>
               </form>
             </CardContent>
           </Card>
@@ -255,15 +264,28 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            {/* Map Placeholder */}
+            {/* Google Maps */}
             <Card className="shadow-xl border-0 overflow-hidden">
-              <div className="h-64 bg-gradient-to-br from-[#004D40]/10 to-[#D4AF37]/10 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-[#004D40] mx-auto mb-3" />
-                  <p className="text-[#004D40] font-medium">
+              <div className="relative">
+                <iframe
+                  src="https://maps.google.com/maps?q=Bernichi+Hotel+Benghazi+Libya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="280"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Baderaldeen Oil Services Location"
+                  className="w-full"
+                ></iframe>
+              </div>
+              <div className="p-4 bg-gradient-to-r from-[#004D40] to-[#00332E]">
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-[#D4AF37] flex-shrink-0" />
+                  <p className="text-white text-sm font-medium">
                     {locale === 'ar'
-                      ? 'ليبيا - أوجلة، بنغازي'
-                      : 'Libya - Awjila, Benghazi'}
+                      ? 'شارع الوكالات ، بجوار فندق برنيتشي ، بنغازي ، ليبيا'
+                      : 'Al-Wikalat Street, next to Bernichi Hotel, Benghazi, Libya'}
                   </p>
                 </div>
               </div>

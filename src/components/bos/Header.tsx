@@ -94,15 +94,16 @@ export default function Header() {
             {/* Language Toggle */}
             <Button
               variant="ghost"
-              size="icon"
               onClick={toggleLanguage}
-              className={`transition-all duration-300 hover:scale-110 ${isScrolled
-                  ? 'text-[#004D40] dark:text-[#D4AF37] hover:bg-[#004D40]/10 hover:text-[#004D40] dark:hover:bg-[#D4AF37]/10 dark:hover:text-[#D4AF37]'
-                  : 'text-white hover:bg-white/10 hover:text-white'
+              className={`px-3 py-1.5 h-auto rounded-full font-bold transition-all duration-300 flex items-center gap-2 border hover:scale-105 active:scale-95 ${isScrolled
+                  ? 'text-[#004D40] dark:text-[#D4AF37] border-[#004D40]/20 dark:border-[#D4AF37]/20 hover:bg-[#004D40]/5'
+                  : 'text-white border-white/30 hover:bg-white/20'
                 }`}
             >
-              <Globe className="w-5 h-5" />
-              <span className="sr-only">Toggle language</span>
+              <Globe className="w-4 h-4 opacity-70" />
+              <span className="text-sm font-semibold tracking-wider">
+                {locale === 'ar' ? 'EN' : 'عربي'}
+              </span>
             </Button>
 
             <ThemeToggle

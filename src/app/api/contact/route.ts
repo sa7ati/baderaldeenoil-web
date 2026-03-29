@@ -12,6 +12,13 @@ export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
 
+    // Basic sanitization
+    const sanitize = (text: string) => text.replace(/[<>]/g, '').trim();
+    body.name = sanitize(body.name || '');
+    body.email = sanitize(body.email || '').toLowerCase();
+    body.subject = sanitize(body.subject || '');
+    body.message = sanitize(body.message || '');
+
     // Validate required fields
     if (!body.name || !body.email || !body.subject || !body.message) {
       return NextResponse.json(

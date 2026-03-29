@@ -16,8 +16,8 @@ export default function HSE() {
 
   const downloadCompanyProfile = () => {
     const link = document.createElement('a');
-    link.href = '/BOS-Company-Profile.pdf';
-    link.download = 'BOS-Company-Profile.pdf';
+    link.href = '/BOS Profile.pdf';
+    link.download = 'BOS Profile.pdf';
     link.click();
   };
 

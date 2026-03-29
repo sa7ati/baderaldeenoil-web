@@ -43,7 +43,6 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number; d
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
 
-      // Easing function (ease-out)
       const easeOut = 1 - Math.pow(1 - progress, 3);
       const currentCount = Math.floor(easeOut * end);
 
@@ -82,68 +81,49 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      {/* Base Background Image */}
+      {/* Base Background Image - Bright & Clear */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center animate-ken-burns"
         style={{
-          backgroundImage: 'url(/hero-bg-new.png)',
+          backgroundImage: 'url(/hero-bg-bright.jpg)',
         }}
       ></div>
 
-      {/* Animated Layer 1 - Horizontal Movement (Rigs swaying) */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-60 animate-swipe-horizontal"
-        style={{
-          backgroundImage: 'url(/hero-bg-new.png)',
-          transformOrigin: 'center center',
-        }}
-      ></div>
+      {/* Light Overlay - keeps image visible and clear */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#004D40]/50 via-[#00332E]/55 to-[#004D40]/65 dark:from-[#001A16]/60 dark:via-[#001A16]/65 dark:to-[#001A16]/75"></div>
 
-      {/* Animated Layer 2 - Vertical Movement (Pump motion) */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40 animate-swipe-vertical"
-        style={{
-          backgroundImage: 'url(/hero-bg-new.png)',
-          transformOrigin: 'center center',
-        }}
-      ></div>
+      {/* Subtle side gradients for depth */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
 
-      {/* Dark Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#004D40]/85 via-[#00332E]/90 to-[#1A1A1A]/95 dark:from-[#001A16]/90 dark:via-[#001A16]/95 dark:to-[#001A16]"></div>
-
-      {/* Additional overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
-
-      {/* Animated Light Rays Effect */}
+      {/* Floating Light Particles Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-[#D4AF37]/5 via-transparent to-transparent animate-rotate-slow"></div>
+        <div className="absolute top-[15%] left-[10%] w-64 h-64 bg-[#D4AF37]/8 rounded-full blur-3xl animate-float-particle-1"></div>
+        <div className="absolute top-[60%] right-[15%] w-48 h-48 bg-white/5 rounded-full blur-2xl animate-float-particle-2"></div>
+        <div className="absolute bottom-[20%] left-[30%] w-56 h-56 bg-[#D4AF37]/5 rounded-full blur-3xl animate-float-particle-3"></div>
       </div>
 
-      {/* Decorative patterns */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-[#D4AF37] rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#D4AF37] rounded-full blur-3xl animate-pulse-slow-delayed"></div>
-      </div>
+      {/* Subtle shimmer line effect */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent animate-shimmer-line"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         {/* Logo Badge */}
         <div className="mb-8 inline-block animate-fade-in-up">
-          <div className="bg-white/10 dark:bg-[#D4AF37]/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20 dark:border-[#D4AF37]/20 hover:bg-white/15 dark:hover:bg-[#D4AF37]/20 transition-colors duration-300">
-            <span className="text-[#D4AF37] font-semibold text-sm md:text-base">
+          <div className="bg-white/15 dark:bg-white/10 backdrop-blur-md rounded-full px-6 py-3 border border-white/25 dark:border-white/15 hover:bg-white/20 dark:hover:bg-white/15 transition-all duration-300 shadow-lg shadow-black/10">
+            <span className="text-[#D4AF37] font-semibold text-sm md:text-base drop-shadow-sm">
               Baderaldeen Oil Services (BOS)
             </span>
           </div>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto animate-fade-in-up drop-shadow-lg" style={{ animationDelay: '0.1s' }}>
           {t('hero.title')}
         </h1>
 
         {/* Slogan */}
         <div className="mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <span className="text-xl md:text-2xl lg:text-3xl text-[#D4AF37] font-bold tracking-wide">
+          <span className="text-xl md:text-2xl lg:text-3xl text-[#D4AF37] font-bold tracking-wide drop-shadow-md">
             {t('hero.slogan')}
           </span>
         </div>
@@ -160,27 +140,27 @@ export default function Hero() {
 
         {/* Stats with Counter Animation */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <div className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 dark:border-white/5 hover:bg-white/15 dark:hover:bg-white/10 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
+          <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/15 dark:border-white/10 hover:bg-white/15 dark:hover:bg-white/10 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
             <AnimatedCounter end={14} suffix="+" />
-            <div className="text-white/80 dark:text-gray-300 text-sm md:text-base">
+            <div className="text-white/90 text-sm md:text-base">
               {locale === 'ar' ? 'سنة من الخبرة' : 'Years Experience'}
             </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/15 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
+          <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/15 dark:border-white/10 hover:bg-white/15 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
             <AnimatedCounter end={50} suffix="+" />
-            <div className="text-white/80 text-sm md:text-base">
+            <div className="text-white/90 text-sm md:text-base">
               {locale === 'ar' ? 'مشروع مكتمل' : 'Projects Completed'}
             </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/15 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
+          <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/15 dark:border-white/10 hover:bg-white/15 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
             <AnimatedCounter end={100} suffix="+" />
-            <div className="text-white/80 text-sm md:text-base">
+            <div className="text-white/90 text-sm md:text-base">
               {locale === 'ar' ? 'عميل راضٍ' : 'Satisfied Clients'}
             </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/15 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
+          <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/15 dark:border-white/10 hover:bg-white/15 hover:border-[#D4AF37]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#D4AF37]/10">
             <div className="text-4xl md:text-5xl font-bold text-[#D4AF37] mb-2">24/7</div>
-            <div className="text-white/80 text-sm md:text-base">
+            <div className="text-white/90 text-sm md:text-base">
               {locale === 'ar' ? 'دعم متواصل' : 'Support Available'}
             </div>
           </div>
@@ -202,69 +182,93 @@ export default function Hero() {
 
       {/* Custom CSS for animations */}
       <style jsx>{`
-        /* Horizontal sway animation - rigs moving left/right */
-        @keyframes swipe-horizontal {
-          0%, 100% {
-            transform: translateX(0) scale(1.01);
-          }
-          25% {
-            transform: translateX(8px) scale(1.015);
-          }
-          50% {
-            transform: translateX(0) scale(1.01);
-          }
-          75% {
-            transform: translateX(-8px) scale(1.015);
-          }
-        }
-        .animate-swipe-horizontal {
-          animation: swipe-horizontal 12s ease-in-out infinite;
-        }
-
-        /* Vertical pump animation - pump jacks moving up/down */
-        @keyframes swipe-vertical {
-          0%, 100% {
-            transform: translateY(0) scale(1.01);
-          }
-          50% {
-            transform: translateY(-6px) scale(1.02);
-          }
-        }
-        .animate-swipe-vertical {
-          animation: swipe-vertical 6s ease-in-out infinite;
-          animation-delay: 1s;
-        }
-
-        /* Slow rotation for light effect */
-        @keyframes rotate-slow {
+        /* Ken Burns - slow zoom on background */
+        @keyframes ken-burns {
           0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-rotate-slow {
-          animation: rotate-slow 60s linear infinite;
-        }
-
-        /* Pulse animation for decorative elements */
-        @keyframes pulse-slow {
-          0%, 100% {
-            opacity: 0.05;
             transform: scale(1);
           }
           50% {
-            opacity: 0.1;
-            transform: scale(1.1);
+            transform: scale(1.08);
+          }
+          100% {
+            transform: scale(1);
           }
         }
-        .animate-pulse-slow {
-          animation: pulse-slow 8s ease-in-out infinite;
+        .animate-ken-burns {
+          animation: ken-burns 30s ease-in-out infinite;
         }
-        .animate-pulse-slow-delayed {
-          animation: pulse-slow 10s ease-in-out infinite;
-          animation-delay: 2s;
+
+        /* Floating particle 1 */
+        @keyframes float-particle-1 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.08;
+          }
+          25% {
+            transform: translate(30px, -20px) scale(1.1);
+            opacity: 0.12;
+          }
+          50% {
+            transform: translate(-10px, 20px) scale(0.95);
+            opacity: 0.06;
+          }
+          75% {
+            transform: translate(20px, 10px) scale(1.05);
+            opacity: 0.1;
+          }
+        }
+        .animate-float-particle-1 {
+          animation: float-particle-1 15s ease-in-out infinite;
+        }
+
+        /* Floating particle 2 */
+        @keyframes float-particle-2 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.05;
+          }
+          33% {
+            transform: translate(-25px, 15px) scale(1.15);
+            opacity: 0.08;
+          }
+          66% {
+            transform: translate(15px, -25px) scale(0.9);
+            opacity: 0.04;
+          }
+        }
+        .animate-float-particle-2 {
+          animation: float-particle-2 18s ease-in-out infinite;
+        }
+
+        /* Floating particle 3 */
+        @keyframes float-particle-3 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.06;
+          }
+          50% {
+            transform: translate(20px, -30px) scale(1.1);
+            opacity: 0.1;
+          }
+        }
+        .animate-float-particle-3 {
+          animation: float-particle-3 20s ease-in-out infinite;
+        }
+
+        /* Shimmer line at top */
+        @keyframes shimmer-line {
+          0% {
+            transform: translateX(-100%);
+          }
+          50% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-shimmer-line {
+          animation: shimmer-line 6s ease-in-out infinite;
         }
 
         /* Fade in up animation */

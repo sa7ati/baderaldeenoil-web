@@ -18,6 +18,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://baderaldeenoil.com"),
   title: "Baderaldeen Oil Services (BOS) | شركة بدر الدين للخدمات النفطية",
   description: "Baderaldeen Oil Services (BOS) - Your trusted partner for integrated oil and gas services in Libya. Excellence. Quality. Trust. شركة بدر الدين للخدمات النفطية - شريككم الموثوق لخدمات النفط والغاز المتكاملة في ليبيا",
   keywords: ["Oil Services", "Gas Services", "Libya", "Baderaldeen", "BOS", "Petroleum", "Energy", "Maintenance", "Construction", "Engineering", "الخدمات النفطية", "ليبيا", "بدر الدين"],
@@ -117,7 +118,6 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem={true}
-          disableTransitionOnChange
         >
           {children}
         </ThemeProvider>

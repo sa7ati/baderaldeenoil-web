@@ -156,9 +156,16 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-6">
-          <p className="text-white/60 text-sm text-center">
-            © {currentYear} Baderaldeen Oil Services Ltd. All Rights Reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <img
+              src="/bos-logo.png"
+              alt="BOS"
+              className="h-6 w-auto opacity-80 transition-opacity duration-300 object-contain"
+            />
+            <p className="text-white/60 text-sm text-center">
+              © {currentYear} Baderaldeen Oil Services Ltd. All Rights Reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
