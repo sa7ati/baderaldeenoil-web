@@ -90,8 +90,32 @@ export default function Header() {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-2">
-            {/* Language Toggle (Desktop) */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Language Toggle (Mobile - Compact) */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleLanguage}
+              className={`lg:hidden w-9 h-9 rounded-full font-bold transition-all duration-300 flex items-center justify-center border hover:scale-105 active:scale-95 ${isScrolled
+                  ? 'text-[#004D40] dark:text-[#D4AF37] border-[#004D40]/20 dark:border-[#D4AF37]/20 hover:bg-[#004D40]/5'
+                  : 'text-white border-white/20 hover:bg-white/10'
+                }`}
+              title={locale === 'ar' ? 'English' : 'العربية'}
+            >
+              <Globe className="w-4 h-4" />
+            </Button>
+
+            {/* Theme Toggle (Mobile - Compact) */}
+            <div className="lg:hidden">
+              <ThemeToggle
+                className={`w-9 h-9 transition-all duration-300 hover:scale-110 ${isScrolled
+                    ? 'text-[#004D40] dark:text-[#D4AF37] hover:bg-[#004D40]/10'
+                    : 'text-white hover:bg-white/10'
+                  }`}
+              />
+            </div>
+
+            {/* Language & Theme (Desktop) */}
             <div className="hidden lg:flex items-center gap-2">
               <Button
                 variant="ghost"
@@ -128,7 +152,7 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className={`lg:hidden transition-all duration-300 hover:scale-110 ${isScrolled
+              className={`lg:hidden w-9 h-9 transition-all duration-300 hover:scale-110 ${isScrolled
                   ? 'text-[#004D40] hover:bg-[#004D40]/10'
                   : 'text-white hover:bg-white/10'
                 }`}
