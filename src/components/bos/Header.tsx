@@ -48,22 +48,23 @@ export default function Header() {
         }`}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-2 min-[400px]:px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 hover:scale-105">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="relative w-11 h-11 min-[400px]:w-12 min-[400px]:h-12 md:w-14 md:h-14 transition-transform duration-300 hover:scale-105 shrink-0">
               <img
                 src="/bos-logo.png"
                 alt="BOS Logo"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className={`hidden md:block transition-colors duration-300 ${isScrolled ? 'text-[#004D40]' : 'text-white'}`}>
-              <div className="font-bold text-lg leading-tight">
+            {/* Adaptive Logo Text: hidden on very small screens < 400px */}
+            <div className={`hidden min-[400px]:block transition-colors duration-300 ${isScrolled ? 'text-[#004D40]' : 'text-white'}`}>
+              <div className="font-bold text-base md:text-lg leading-tight uppercase tracking-tight">
                 {locale === 'ar' ? 'بدر الدين' : 'Baderaldeen'}
               </div>
-              <div className="text-xs opacity-80">
+              <div className="text-[10px] md:text-xs opacity-80 font-medium">
                 {locale === 'ar' ? 'للخدمات النفطية' : 'Oil Services'}
               </div>
             </div>
@@ -90,13 +91,13 @@ export default function Header() {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-0.5 min-[400px]:gap-2 shrink-0">
             {/* Language Toggle (Mobile - Compact) */}
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleLanguage}
-              className={`lg:hidden w-9 h-9 rounded-full font-bold transition-all duration-300 flex items-center justify-center border hover:scale-105 active:scale-95 ${isScrolled
+              className={`lg:hidden w-9 h-9 rounded-full font-bold transition-all duration-300 flex items-center justify-center border-0 hover:scale-105 active:scale-95 ${isScrolled
                   ? 'text-[#004D40] dark:text-[#D4AF37] border-[#004D40]/20 dark:border-[#D4AF37]/20 hover:bg-[#004D40]/5'
                   : 'text-white border-white/20 hover:bg-white/10'
                 }`}
