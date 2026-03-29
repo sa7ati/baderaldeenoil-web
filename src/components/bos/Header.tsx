@@ -91,27 +91,29 @@ export default function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-2">
-            {/* Language Toggle */}
-            <Button
-              variant="ghost"
-              onClick={toggleLanguage}
-              className={`px-3 py-1.5 h-auto rounded-full font-bold transition-all duration-300 flex items-center gap-2 border hover:scale-105 active:scale-95 ${isScrolled
-                  ? 'text-[#004D40] dark:text-[#D4AF37] border-[#004D40]/20 dark:border-[#D4AF37]/20 hover:bg-[#004D40]/5'
-                  : 'text-white border-white/30 hover:bg-white/20'
-                }`}
-            >
-              <Globe className="w-4 h-4 opacity-70" />
-              <span className="text-sm font-semibold tracking-wider">
-                {locale === 'ar' ? 'EN' : 'عربي'}
-              </span>
-            </Button>
+            {/* Language Toggle (Desktop) */}
+            <div className="hidden lg:flex items-center gap-2">
+              <Button
+                variant="ghost"
+                onClick={toggleLanguage}
+                className={`px-3 py-1.5 h-auto rounded-full font-bold transition-all duration-300 flex items-center gap-2 border hover:scale-105 active:scale-95 ${isScrolled
+                    ? 'text-[#004D40] dark:text-[#D4AF37] border-[#004D40]/20 dark:border-[#D4AF37]/20 hover:bg-[#004D40]/5'
+                    : 'text-white border-white/30 hover:bg-white/20'
+                  }`}
+              >
+                <Globe className="w-4 h-4 opacity-70" />
+                <span className="text-sm font-semibold tracking-wider">
+                  {locale === 'ar' ? 'EN' : 'عربي'}
+                </span>
+              </Button>
 
-            <ThemeToggle
-              className={`transition-all duration-300 hover:scale-110 ${isScrolled
-                  ? 'text-[#004D40] dark:text-[#D4AF37] hover:bg-[#004D40]/10'
-                  : 'text-white hover:bg-white/10'
-                }`}
-            />
+              <ThemeToggle
+                className={`transition-all duration-300 hover:scale-110 ${isScrolled
+                    ? 'text-[#004D40] dark:text-[#D4AF37] hover:bg-[#004D40]/10'
+                    : 'text-white hover:bg-white/10'
+                  }`}
+              />
+            </div>
 
             {/* CTA Button */}
             <Button
@@ -138,14 +140,34 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${isMobileMenuOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
           }`}>
-          <nav className="flex flex-col gap-1 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-gray-100">
+          <nav className="flex flex-col gap-1 bg-white/95 dark:bg-[#001A16]/95 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-gray-100 dark:border-white/10">
+            {/* Mobile Controls (Language & Theme) */}
+            <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100 dark:border-white/10">
+              <Button
+                variant="outline"
+                onClick={toggleLanguage}
+                className="flex-1 flex items-center justify-center gap-2 mr-2 dark:text-white dark:border-white/20"
+              >
+                <Globe className="w-4 h-4" />
+                <span>{locale === 'ar' ? 'English' : 'العربية'}</span>
+              </Button>
+              <div className="flex items-center gap-2 p-1 bg-gray-100 dark:bg-white/10 rounded-lg">
+                <span className="text-xs font-medium px-2 dark:text-gray-400">
+                  {locale === 'ar' ? 'المظهر' : 'Theme'}
+                </span>
+                <ThemeToggle />
+              </div>
+            </div>
+
             {navItems.map((item) => (
               <button
                 key={item.key}
                 onClick={() => scrollToSection(item.href)}
-                className="px-4 py-3 rounded-lg font-medium text-[#1A1A1A] hover:bg-[#004D40] hover:text-white transition-all duration-300 text-right"
+                className={`px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  isRTL ? 'text-right' : 'text-left'
+                } text-[#1A1A1A] dark:text-white hover:bg-[#004D40] hover:text-white dark:hover:bg-[#D4AF37] dark:hover:text-[#1A1A1A]`}
               >
                 {t(`nav.${item.key}`)}
               </button>
